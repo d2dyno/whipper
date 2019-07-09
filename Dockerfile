@@ -30,10 +30,7 @@ RUN curl -o - 'https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+0.94+2.tar.
 RUN ldconfig
 
 # add user
-RUN useradd -m worker -G cdrom \
-  && mkdir -p /output /home/worker/.config/whipper \
-  && chown worker: /output /home/worker/.config/whipper
-VOLUME ["/home/worker/.config/whipper", "/output"]
+RUN useradd -m worker -G cdrom
 
 # setup locales + cleanup
 RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment \
